@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:17:44 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/11/21 16:59:55 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/11/21 17:29:04 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_allocate_buf(void);
+char	ft_extract_line(char **buf_static);
 size_t	ft_strlen(const char *s);
 
 #endif
