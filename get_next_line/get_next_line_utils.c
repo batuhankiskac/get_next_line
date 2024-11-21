@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:17:34 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/11/21 12:30:46 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/11/21 16:58:06 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (NULL);
 }
-
 
 char	*ft_strdup(const char *s)
 {
