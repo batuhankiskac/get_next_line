@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 12:17:44 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/11/23 20:19:17 by batuhankisk      ###   ########.fr       */
+/*   Created: 2024/11/23 20:18:26 by batuhankisk       #+#    #+#             */
+/*   Updated: 2024/11/23 20:21:51 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
+# endif
+
+# ifndef MAX_FILES_OPENED
+#  define MAX_FILES_OPENED 2039384
 # endif
 
 char	*get_next_line(int fd);
