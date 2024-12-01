@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 20:18:07 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/01 18:32:04 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/01 18:39:08 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
-	if (bytes_read < 0 || (!buf_static && bytes_read == 0))
+	if (bytes_read < 0 || (!buf_static[fd] && bytes_read == 0))
 	{
 		free(buf_static[fd]);
 		buf_static[fd] = NULL;
