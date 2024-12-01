@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 20:34:52 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/01 20:39:13 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/01 20:42:54 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static char	*parse(char *s, char c)
 	char	*str;
 	int		i;
 	int		j;
+
 	i = 0;
 	j = 0;
-
 	while (s[i] && s[i] != c)
 		i++;
 	if (!s[i])
