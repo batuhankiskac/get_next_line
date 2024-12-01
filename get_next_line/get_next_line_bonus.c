@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 20:18:07 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/11/23 21:57:05 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/01 18:32:04 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ char	*ft_extract_line(char **buf_static)
 		line = ft_substr(*buf_static, 0, new_line_pos - *buf_static + 1);
 		temp = ft_substr(*buf_static,
 				new_line_pos - *buf_static + 1,
-				ft_strlen(*buf_static) - (new_line_pos - *buf_static + 1));
+				ft_strlen(*buf_static)
+				- (new_line_pos - *buf_static + 1));
 		free(*buf_static);
-		*buf_static = NULL;
+		*buf_static = temp;
 		return (line);
 	}
 	line = ft_strdup(*buf_static);

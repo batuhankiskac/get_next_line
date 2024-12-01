@@ -6,13 +6,13 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:17:40 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/11/21 17:26:32 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/01 18:30:54 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	ft_extract_line(char **buf_static)
+char	*ft_extract_line(char **buf_static)
 {
 	char	*new_line_pos;
 	char	*temp;
