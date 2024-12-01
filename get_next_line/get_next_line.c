@@ -5,73 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 12:17:40 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/01 18:40:22 by batuhankisk      ###   ########.fr       */
+/*   Created: 2024/12/01 20:35:14 by batuhankisk       #+#    #+#             */
+/*   Updated: 2024/12/01 20:37:09 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_extract_line(char **buf_static)
+static char	*parse(char *s, char c)
 {
-	char	*new_line_pos;
-	char	*temp;
-	char	*line;
+	char	*str;
+	int		i;
+	int		j;
+	i = 0;
+	j = 0;
 
-	if (!buf_static || !*buf_static)
-		return (NULL);
-	new_line_pos = ft_strchr(*buf_static, '\n');
-	if (new_line_pos)
+	while (s[i] && s[i] != c)
+		i++;
+	if (!s[i])
 	{
-		line = ft_substr(*buf_static, 0, new_line_pos - *buf_static + 1);
-		temp = ft_substr(*buf_static,
-				new_line_pos - *buf_static + 1,
-				ft_strlen(*buf_static)
-				- (new_line_pos - *buf_static + 1));
-		free(*buf_static);
-		*buf_static = temp;
-		return (line);
+		free(s);
+		return (NULL);
 	}
-	line = ft_strdup(*buf_static);
-	free(*buf_static);
-	*buf_static = NULL;
-	return (line);
+	str = (char *)malloc((ft_strlen(s) - i) + 1);
+	if (!str)
+		return (NULL);
+	i++;
+	while (s[i])
+		str[j++] = s[i++];
+	str[j] = '\0';
+	free(s);
+	return (str);
 }
 
-char	*ft_allocate_buf(void)
+static char	*new_line(char *s, char c)
 {
-	char	*buf;
+	char	*str;
+	int		i;
 
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buf)
+	i = 0;
+	if (!s[i])
 		return (NULL);
-	return (buf);
+	while (s[i] != '\0' && s[i] != c)
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != c)
+	{
+		str[i] = s[i];
+		i++;
+	}
+	if (s[i] == c)
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+static char	*next_line(int fd, char *s)
+{
+	char	*str;
+	int		i;
+
+	str = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!str)
+		return (NULL);
+	i = 1;
+	while (!ft_strchr(s, '\n') && i != 0)
+	{
+		i = read(fd, str, BUFFER_SIZE);
+		if (i == -1)
+		{
+			free(str);
+			return (NULL);
+		}
+		str[i] = '\0';
+		s = ft_strjoin(s, str);
+	}
+	free(str);
+	return (s);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buf_static;
-	char		*buf;
-	ssize_t		bytes_read;
+	char		*str;
+	static char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buf = ft_allocate_buf();
-	bytes_read = read(fd, buf, BUFFER_SIZE);
-	while (bytes_read > 0)
+	line = next_line(fd, line);
+	if (line)
 	{
-		buf[bytes_read] = '\0';
-		buf_static = ft_strjoin(buf_static, buf);
-		if (!buf_static || ft_strchr(buf_static, '\n'))
-			break ;
-		bytes_read = read(fd, buf, BUFFER_SIZE);
+		str = new_line(line, '\n');
+		line = parse(line, '\n');
+		return (str);
 	}
-	free(buf);
-	if (bytes_read < 0 || (!buf_static && bytes_read == 0))
-	{
-		free(buf_static);
-		buf_static = NULL;
-		return (NULL);
-	}
-	return (ft_extract_line(&buf_static));
+	return (NULL);
 }
