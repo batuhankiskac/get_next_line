@@ -1,28 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 13:40:25 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 16:34:40 by batuhankisk      ###   ########.fr       */
+/*   Created: 2024/12/02 16:39:15 by batuhankisk       #+#    #+#             */
+/*   Updated: 2024/12/02 16:39:32 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line_bonus.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
 
-# include <unistd.h>
-# include <stdlib.h>
-
-char		*get_next_line(int fd);
-char		*ft_strjoin(char *s1, char *s2);
-char		*ft_strchr(const char *s, int c);
-int			ft_strlen(char *s);
-
-#endif
