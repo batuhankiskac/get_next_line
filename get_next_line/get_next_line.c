@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:40:22 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 16:18:21 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 18:28:29 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*next_line(int fd, char *line, char c)
 	while (!ft_strchr(line, c) && i != 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
-		if (i == - 1)
+		if (i == -1)
 		{
 			free(buffer);
 			return (NULL);
@@ -78,7 +78,7 @@ static char	*next_line(int fd, char *line, char c)
 		line = ft_strjoin(line, buffer);
 	}
 	free(buffer);
-	return(line);
+	return (line);
 }
 
 char	*get_next_line(int fd)
