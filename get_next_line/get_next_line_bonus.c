@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:39:15 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 18:57:59 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 19:01:15 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static char	*new_line(char *line, char c)
 	char	*new;
 	int		i;
 
+	i = 0;
 	if (!line[i])
 		return (NULL);
 	while (line[i] && line[i] != c)
