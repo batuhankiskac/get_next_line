@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:39:15 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 19:01:15 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 19:39:36 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*parse(char *line, char c)
 		free(line);
 		return (NULL);
 	}
-	left = (char *)malloc(sizeof(char) * (ft_strlen(line - i) + 1));
+	left = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
 	if (!left)
 		return (NULL);
 	i++;
@@ -75,7 +75,7 @@ static char	*next_line(int fd, char *line, char c)
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(buffer, c) && i != '\0')
+	while (!ft_strchr(line, c) && i != '\0')
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1)
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	char		*str;
 	static char	*line[1024];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line[fd] = next_line(fd, line[fd], '\n');
 	if (line[fd])

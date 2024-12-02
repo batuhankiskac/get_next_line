@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:40:22 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 18:58:09 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 19:35:21 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char	*next_line(int fd, char *line, char c)
 	int		i;
 
 	i = 1;
-	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	while (!ft_strchr(line, c) && i != 0)
