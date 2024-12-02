@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:40:25 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 15:47:29 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 16:11:21 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char		*get_next_line(int fd);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_strchr(const char *s, int c);
 static char	*new_line(char *s, char c);
+static char	*parse(char *line, char c);
+static char	*next_line(int fd, char *line, char c);
 int			ft_strlen(char *s);
 
 #endif

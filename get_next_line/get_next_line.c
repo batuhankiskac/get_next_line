@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:40:22 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 16:04:50 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 16:18:21 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,19 @@ static char	*next_line(int fd, char *line, char c)
 	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
+	while (!ft_strchr(line, c) && i != 0)
+	{
+		i = read(fd, buffer, BUFFER_SIZE);
+		if (i == - 1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[i] = '\0';
+		line = ft_strjoin(line, buffer);
+	}
+	free(buffer);
+	return(line);
 }
 
 char	*get_next_line(int fd)
@@ -76,4 +89,11 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = next_line(fd, line, '\n');
+	if (line)
+	{
+		str = new_line(line, '\n');
+		line = parse(line, '\n');
+		return (str);
+	}
+	return (NULL);
 }
