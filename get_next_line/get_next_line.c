@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:40:22 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 19:35:21 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 19:43:17 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static char	*next_line(int fd, char *line, char c)
 		if (i == -1)
 		{
 			free(buffer);
+			free(line);
 			return (NULL);
 		}
 		buffer[i] = '\0';
