@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:39:15 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 18:31:41 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 18:57:59 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,49 @@ static char	*parse(char *line, char c)
 
 	i = 0;
 	j = 0;
-	while (left[i] && left[i] != c)
+	while (line[i] && line[i] != c)
 		i++;
-	if (!left[i])
+	if (!line[i])
 	{
 		free(line);
 		return (NULL);
 	}
-	
+	left = (char *)malloc(sizeof(char) * (ft_strlen(line - i) + 1));
+	if (!left)
+		return (NULL);
+	i++;
+	while (line[i])
+		left[j++] = line[i++];
+	left[j] = '\0';
+	free(line);
+	return (left);
 }
 
 static char	*new_line(char *line, char c)
 {
+	char	*new;
+	int		i;
 
+	if (!line[i])
+		return (NULL);
+	while (line[i] && line[i] != c)
+		i++;
+	new = (char *)malloc(sizeof(char) * (i + 2));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != c)
+	{
+		new[i] = line[i];
+		i++;
+	}
+	if (line[i] == c)
+	{
+		new[i] = line[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
 
 static char	*next_line(int fd, char *line, char c)

@@ -6,7 +6,7 @@
 /*   By: batuhankiskac <batuhankiskac@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 13:40:22 by batuhankisk       #+#    #+#             */
-/*   Updated: 2024/12/02 18:28:29 by batuhankisk      ###   ########.fr       */
+/*   Updated: 2024/12/02 18:58:09 by batuhankisk      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	*parse(char *line, char c)
 		free(line);
 		return (NULL);
 	}
-	left = (char *)malloc(sizeof(char) * (ft_strlen(c) - i + 1));
+	left = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
 	if (!left)
 		return (NULL);
 	i++;
@@ -47,10 +47,19 @@ static char	*new_line(char *line, char c)
 	if (!line[i])
 		return (NULL);
 	while (line[i] && line[i] != c)
-		new[i++] = line[i++];
+		i++;
+	new = (char *)malloc(sizeof(char) * (i + 2));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != c)
+	{
+		new[i] = line[i];
+		i++;
+	}
 	if (line[i] == c)
 	{
-		new[i] = c;
+		new[i] = line[i];
 		i++;
 	}
 	new[i] = '\0';
