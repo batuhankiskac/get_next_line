@@ -176,8 +176,3 @@ gcc main.c get_next_line.a -o gnl
 - **Segmentation Fault:**
   - Ensure valid file descriptors.
   - Verify `malloc` calls and null pointer checks.
-
----
-
-## **License**
-This project is licensed under the MIT License. See the `LICENSE` file for details.
